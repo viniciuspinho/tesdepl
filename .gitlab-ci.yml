@@ -1,0 +1,18 @@
+executar_teste:
+  before_script:
+    - echo "Preparando ambiente para testes..."
+    - # Comandos para configurar o ambiente, por exemplo:
+  script:
+    - echo "Executando testes..."
+    - # Comando para executar os testes, por exemplo:
+    
+  after_script:
+    - echo "Limpando ambiente de teste..."
+
+criar_imagens:
+  script:
+    - echo "Criando imagens Docker..."
+
+  push_imagens:
+    script:
+      - echo "Enviando imagens para o registro..."
