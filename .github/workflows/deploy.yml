@@ -1,0 +1,28 @@
+name: Deploy on-premise
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Garantir pasta do app
+        run: mkdir -p /home/suporte/apps/meuapp
+
+      - name: Copiar arquivos para o servidor
+        run: rsync -av --delete ./ /home/suporte/apps/meuapp/
+
+      - name: Subir container
+        run: |
+          cd /home/suporte/apps/meuapp
+          docker compose up -d
+
+      - name: Verificar containers
+        run: docker ps
