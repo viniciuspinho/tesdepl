@@ -22,6 +22,7 @@ jobs:
       - name: Subir container
         run: |
           cd /home/suporte/apps/meuapp
+          docker compose down --remove-orphans
           docker compose up -d
 
       - name: Verificar containers
